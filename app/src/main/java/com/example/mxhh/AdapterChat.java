@@ -116,7 +116,6 @@ public class AdapterChat extends RecyclerView.Adapter<com.example.mxhh.AdapterCh
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     if (dataSnapshot1.child("sender").getValue().equals(myuid)) {
-                        // any two of below can be used
                         dataSnapshot1.getRef().removeValue();
 					/* HashMap<String, Object> hashMap = new HashMap<>();
 						hashMap.put("message", "This Message Was Deleted");

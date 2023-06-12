@@ -15,7 +15,7 @@
         android:layout_marginTop="50dp"
         android:gravity="center"
         android:text="Sign Up Here"
-        android:textColor="@color/colorBlack"
+        android:textColor="@color/colorWhite"
         android:textSize="28sp"
         android:textStyle="bold|italic" />
 
@@ -27,7 +27,7 @@
         android:layout_marginStart="35dp"
         android:layout_marginTop="120dp"
         android:text="Name"
-        android:textColor="@color/colorBlack" />
+        android:textColor="@color/colorWhite" />
 
     <EditText
         android:id="@+id/register_name"
@@ -38,7 +38,6 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/edit"
         android:drawableStart="@drawable/name"
         android:hint="Your Name..."
         android:inputType="text"
@@ -52,7 +51,7 @@
         android:layout_marginStart="35dp"
         android:layout_marginTop="10dp"
         android:text="Email"
-        android:textColor="@color/colorBlack" />
+        android:textColor="@color/colorWhite" />
 
     <EditText
         android:id="@+id/register_email"
@@ -63,7 +62,6 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/edit"
         android:drawableStart="@drawable/email"
         android:hint="Email..."
         android:inputType="textEmailAddress"
@@ -77,7 +75,7 @@
         android:layout_marginStart="35dp"
         android:layout_marginTop="10dp"
         android:text="Password"
-        android:textColor="@color/colorBlack" />
+        android:textColor="@color/colorWhite" />
 
     <EditText
         android:id="@+id/register_password"
@@ -88,7 +86,6 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/edit"
         android:drawableStart="@drawable/password"
         android:hint="Password..."
         android:inputType="textPassword"
@@ -120,7 +117,7 @@
         android:layout_marginEnd="23dp"
         android:text=" Already Have a Account?Sign In"
         android:textAlignment="center"
-        android:textColor="@color/colorBlack"
+        android:textColor="@color/colorWhite"
         android:textSize="17sp"
         android:textStyle="bold" />
 

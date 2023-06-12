@@ -43,11 +43,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Create Account");
+        actionBar.setTitle("Login");
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        // initialising the layout items
         email = findViewById(R.id.login_email);
         password = findViewById(R.id.login_password);
         newdnewaccount = findViewById(R.id.needs_new_account);
@@ -57,7 +56,6 @@ public class LoginActivity extends AppCompatActivity {
         loadingBar = new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
 
-        // checking if user is null or not
         if (mAuth != null) {
             currentUser = mAuth.getCurrentUser();
         }
@@ -68,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                 String emaill = email.getText().toString().trim();
                 String pass = password.getText().toString().trim();
 
-                // if format of email doesn't matches return null
+                // Kiem tra dinh dang email
                 if (!Patterns.EMAIL_ADDRESS.matcher(emaill).matches()) {
                     email.setError("Invalid Email");
                     email.setFocusable(true);
@@ -79,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        // If new account then move to Registration Activity
+        // Su kien bam vao text new account
         newdnewaccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,9 +85,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        // Recover Your Password using email
+        // Lay lai mat khau bang email khi nhan vao text forgot password
         reocverpass.setOnClickListener(new View.OnClickListener() {
             @Override
+            //  Chay ham de pop up dialog
             public void onClick(View v) {
                 showRecoverPasswordDialog();
             }
@@ -100,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Recover Password");
         LinearLayout linearLayout = new LinearLayout(this);
-        final EditText emailet = new EditText(this);//write your registered email
+        final EditText emailet = new EditText(this);
         emailet.setText("Email");
         emailet.setMinEms(16);
         emailet.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
@@ -111,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String emaill = emailet.getText().toString().trim();
-                beginRecovery(emaill);//send a mail on the mail to recover password
+                beginRecovery(emaill);// Chay ham recovery email dua theo bien email nay
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -128,9 +127,10 @@ public class LoginActivity extends AppCompatActivity {
         loadingBar.setCanceledOnTouchOutside(false);
         loadingBar.show();
 
-        // send reset password email
+        // dung mAuth cua firebas de gui
         mAuth.sendPasswordResetEmail(emaill).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
+            //Ney thanh cong
             public void onComplete(@NonNull Task<Void> task) {
                 loadingBar.dismiss();
                 if (task.isSuccessful()) {
@@ -139,6 +139,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Error Occurred", Toast.LENGTH_LONG).show();
                 }
             }
+            //Neu that bai
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
@@ -152,7 +153,7 @@ public class LoginActivity extends AppCompatActivity {
         loadingBar.setMessage("Logging In....");
         loadingBar.show();
 
-        // sign in with email and password after authenticating
+        // Dang nhap mang mAuth cua firebase
         mAuth.signInWithEmailAndPassword(emaill, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -162,6 +163,7 @@ public class LoginActivity extends AppCompatActivity {
                     loadingBar.dismiss();
                     FirebaseUser user = mAuth.getCurrentUser();
 
+                    //Chuan bi du lieu can thiet de luu vao
                     if (task.getResult().getAdditionalUserInfo().isNewUser()) {
                         String email = user.getEmail();
                         String uid = user.getUid();
@@ -176,10 +178,10 @@ public class LoginActivity extends AppCompatActivity {
                         hashMap.put("cover", "");
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-                        // store the value in Database in "Users" Node
+                        // Luu du lieu vao bang Users dang object
                         DatabaseReference reference = database.getReference("Users");
 
-                        // storing the value in Firebase
+                        // Bat dau luu vao thang con cua Uid cua User
                         reference.child(uid).setValue(hashMap);
                     }
                     Toast.makeText(LoginActivity.this, "Registered User " + user.getEmail(), Toast.LENGTH_LONG).show();

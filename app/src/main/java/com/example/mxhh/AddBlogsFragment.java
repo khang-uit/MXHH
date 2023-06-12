@@ -74,7 +74,6 @@ public class AddBlogsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         firebaseAuth = FirebaseAuth.getInstance();
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -88,7 +87,6 @@ public class AddBlogsFragment extends Fragment {
         pd.setCanceledOnTouchOutside(false);
         Intent intent = getActivity().getIntent();
 
-        // Retrieving the user data like name ,email and profile pic using query
         databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         Query query = databaseReference.orderByChild("email").equalTo(firebaseUser.getEmail());
         query.addValueEventListener(new ValueEventListener() {
@@ -108,11 +106,9 @@ public class AddBlogsFragment extends Fragment {
             }
         });
 
-        // Initialising camera and storage permission
         cameraPermission = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagePermission = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
-        // After click on image we will be selecting an image
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,28 +116,24 @@ public class AddBlogsFragment extends Fragment {
             }
         });
 
-        // Now we will upload out blog
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String titl = "" + title.getText().toString().trim();
                 String description = "" + des.getText().toString().trim();
 
-                // If empty set error
                 if (TextUtils.isEmpty(titl)) {
                     title.setError("Title Cant be empty");
                     Toast.makeText(getContext(), "Title can't be left empty", Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                // If empty set error
                 if (TextUtils.isEmpty(description)) {
                     des.setError("Description Cant be empty");
                     Toast.makeText(getContext(), "Description can't be left empty", Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                // If empty show error
                 if (imageuri == null) {
                     Toast.makeText(getContext(), "Select an Image", Toast.LENGTH_LONG).show();
                     return;
@@ -180,14 +172,12 @@ public class AddBlogsFragment extends Fragment {
         builder.create().show();
     }
 
-    // check for storage permission
     private Boolean checkStoragePermission() {
         boolean result = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 == (PackageManager.PERMISSION_GRANTED);
         return result;
     }
 
-    // if not given then request for permission after that check if request is given or not
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
             case CAMERA_REQUEST: {
@@ -204,7 +194,6 @@ public class AddBlogsFragment extends Fragment {
                 }
             }
 
-            // function end
             break;
             case STORAGE_REQUEST: {
                 if (grantResults.length > 0) {
@@ -222,25 +211,20 @@ public class AddBlogsFragment extends Fragment {
         }
     }
 
-    // request for permission to write data into storage
     private void requestStoragePermission() {
         requestPermissions(storagePermission, STORAGE_REQUEST);
     }
 
-    // check camera permission to click picture using camera
     private Boolean checkCameraPermission() {
         boolean result = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA) == (PackageManager.PERMISSION_GRANTED);
         boolean result1 = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
         return result && result1;
     }
 
-    // request for permission to click photo using camera in app
     private void requestCameraPermission() {
         requestPermissions(cameraPermission, CAMERA_REQUEST);
     }
 
-    // if access is given then pick image from camera and then put
-    // the imageuri in intent extra and pass to startactivityforresult
     private void pickFromCamera() {
         ContentValues contentValues = new ContentValues();
         contentValues.put(MediaStore.Images.Media.TITLE, "Temp_pic");
@@ -251,16 +235,13 @@ public class AddBlogsFragment extends Fragment {
         startActivityForResult(camerIntent, IMAGE_PICKCAMERA_REQUEST);
     }
 
-    // if access is given then pick image from gallery
     private void pickFromGallery() {
         Intent galleryIntent = new Intent(Intent.ACTION_PICK);
         galleryIntent.setType("image/*");
         startActivityForResult(galleryIntent, IMAGEPICK_GALLERY_REQUEST);
     }
 
-    // Upload the value of blog data into firebase
     private void uploadData(final String titl, final String description) {
-        // show the progress dialog box
         pd.setMessage("Publishing Post");
         pd.show();
         final String timestamp = String.valueOf(System.currentTimeMillis());
@@ -270,7 +251,6 @@ public class AddBlogsFragment extends Fragment {
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
         byte[] data = byteArrayOutputStream.toByteArray();
 
-        // initialising the storage reference for updating the data
         StorageReference storageReference1 = FirebaseStorage.getInstance().getReference().child(filepathname);
         storageReference1.putBytes(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -326,7 +306,6 @@ public class AddBlogsFragment extends Fragment {
         });
     }
 
-    // Here we are getting data from image
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (resultCode == getActivity().RESULT_OK) {

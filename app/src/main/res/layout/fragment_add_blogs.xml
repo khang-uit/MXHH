@@ -16,7 +16,6 @@
             android:id="@+id/ptitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edit"
             android:hint="Enter Title"
             android:minHeight="80dp"
             android:padding="10dp"
@@ -27,7 +26,6 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/edit"
             android:src="@drawable/image" />
 
         <EditText
@@ -35,7 +33,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:background="@drawable/edit"
             android:gravity="start"
             android:hint="Enter Description"
             android:inputType="textCapSentences|textMultiLine"

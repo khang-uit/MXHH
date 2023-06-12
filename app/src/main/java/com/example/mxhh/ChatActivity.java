@@ -84,7 +84,6 @@ public class ChatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
         firebaseAuth = FirebaseAuth.getInstance();
 
-        // initialise the text views and layouts
         profile = findViewById(R.id.profiletv);
         name = findViewById(R.id.nameptv);
         userstatus = findViewById(R.id.onlinetv);
@@ -99,7 +98,6 @@ public class ChatActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         uid = getIntent().getStringExtra("uid");
 
-        // getting uid of another user using intent
         firebaseDatabase = FirebaseDatabase.getInstance();
 
         // initialising permissions

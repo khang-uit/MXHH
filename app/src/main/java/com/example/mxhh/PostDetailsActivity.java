@@ -58,6 +58,7 @@ public class PostDetailsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Lay tat ca thanh phan giao dien trong activity_postdetail
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_postdetails);
         actionBar = getSupportActionBar();
@@ -285,9 +286,7 @@ public class PostDetailsActivity extends AppCompatActivity {
                     String ptitle = dataSnapshot1.child("title").getValue().toString();
                     String descriptions = dataSnapshot1.child("description").getValue().toString();
                     uimage = dataSnapshot1.child("uimage").getValue().toString();
-                    hisdp = dataSnapshot1.child("udp").getValue().toString();
-                    // hisuid = dataSnapshot1.child("uid").getValue().toString();
-                    String uemail = dataSnapshot1.child("uemail").getValue().toString();
+                    hisdp = dataSnapshot1.child("udp").getValue().toString();String uemail = dataSnapshot1.child("uemail").getValue().toString();
                     hisname = dataSnapshot1.child("uname").getValue().toString();
                     ptime = dataSnapshot1.child("ptime").getValue().toString();
                     plike = dataSnapshot1.child("plike").getValue().toString();
