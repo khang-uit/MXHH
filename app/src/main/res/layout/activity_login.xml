@@ -54,6 +54,7 @@
                 android:textColor="@color/colordrawer"
                 android:inputType="textEmailAddress"
                 android:padding="8dp"
+                android:textColor="@color/black"
                 android:background="@drawable/edittext_underline"/>
 
             <TextView
@@ -82,6 +83,7 @@
                 android:textColor="@color/colordrawer"
                 android:inputType="textPassword"
                 android:padding="8dp"
+                android:textColor="@color/black"
                 android:background="@drawable/edittext_underline"/>
 
             <TextView
