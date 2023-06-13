@@ -49,7 +49,8 @@
                 android:drawableStart="@drawable/email"
                 android:hint="Email..."
                 android:inputType="textEmailAddress"
-                android:padding="8dp" />
+                android:padding="8dp"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/password"
@@ -73,7 +74,8 @@
                 android:drawableStart="@drawable/password"
                 android:hint="Password..."
                 android:inputType="textPassword"
-                android:padding="8dp" />
+                android:padding="8dp"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/forgetp"
