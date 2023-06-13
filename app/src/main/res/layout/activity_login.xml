@@ -53,7 +53,7 @@
                 android:hint=" Email..."
                 android:inputType="textEmailAddress"
                 android:padding="8dp"
-                android:textColor="@color/black"
+                
                 android:textColorHint="@color/colordrawer" />
 
 
@@ -83,7 +83,7 @@
 
                 android:inputType="textPassword"
                 android:padding="8dp"
-                android:textColor="@color/black"
+               
                 android:textColorHint="@color/colordrawer" />
 
             <TextView
