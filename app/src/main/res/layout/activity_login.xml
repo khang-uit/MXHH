@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/welcom"
                 android:layout_marginStart="35dp"
-                android:layout_marginTop="120dp"
+                android:layout_marginTop="80dp"
                 android:text="Email"
                 android:textColor="@color/colordrawer"
                 android:textSize="20sp" />
@@ -42,7 +42,7 @@
             <EditText
                 android:id="@+id/login_email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_below="@+id/email"
                 android:layout_alignParentStart="true"
                 android:layout_marginLeft="30dp"
@@ -55,6 +55,7 @@
                 android:padding="8dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/colordrawer" />
+
 
             <TextView
                 android:id="@+id/password"
@@ -70,7 +71,7 @@
             <EditText
                 android:id="@+id/login_password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_below="@+id/password"
                 android:layout_alignParentStart="true"
                 android:layout_marginLeft="30dp"
@@ -79,6 +80,7 @@
                 android:background="@drawable/edittext_underline"
                 android:drawableStart="@drawable/password1"
                 android:hint="Password..."
+
                 android:inputType="textPassword"
                 android:padding="8dp"
                 android:textColor="@color/black"
@@ -104,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/forgetp"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginRight="30dp"
                 android:background="@drawable/button_with_black_border"
                 android:padding="4dp"
