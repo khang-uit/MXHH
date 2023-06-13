@@ -48,12 +48,13 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="30dp"
+                android:background="@drawable/edittext_underline"
                 android:drawableStart="@drawable/email1"
                 android:hint=" Email..."
-                android:textColorHint="@color/colordrawer"
                 android:inputType="textEmailAddress"
                 android:padding="8dp"
-                android:background="@drawable/edittext_underline"/>
+                android:textColor="@color/black"
+                android:textColorHint="@color/colordrawer" />
 
             <TextView
                 android:id="@+id/password"
@@ -75,12 +76,13 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="30dp"
+                android:background="@drawable/edittext_underline"
                 android:drawableStart="@drawable/password1"
                 android:hint="Password..."
-                android:textColorHint="@color/colordrawer"
                 android:inputType="textPassword"
                 android:padding="8dp"
-                android:background="@drawable/edittext_underline"/>
+                android:textColor="@color/black"
+                android:textColorHint="@color/colordrawer" />
 
             <TextView
                 android:id="@+id/forgetp"
