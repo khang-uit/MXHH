@@ -145,10 +145,10 @@ public class PostDetailsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 if (dataSnapshot.child(postId).hasChild(myuid)) {
-                    likebtn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.like, 0, 0, 0);
+                    likebtn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.unlike_blu, 0, 0, 0);
                     likebtn.setText("Liked");
                 } else {
-                    likebtn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.unlike, 0, 0, 0);
+                    likebtn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.liken, 0, 0, 0);
                     likebtn.setText("Like");
                 }
             }
