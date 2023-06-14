@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -53,6 +54,7 @@ public class ChatListFragment extends Fragment {
         recyclerView = view.findViewById(R.id.chatlistrecycle);
         chatListList = new ArrayList<>();
         chatList = new ArrayList<>();
+
         reference = FirebaseDatabase.getInstance().getReference("ChatList").child(firebaseUser.getUid());
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -60,6 +62,9 @@ public class ChatListFragment extends Fragment {
                 chatListList.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     ModelChatList modelChatList = ds.getValue(ModelChatList.class);
+                    Log.e("VCLLL", modelChatList.toString());
+                    chatListList.add(modelChatList);
+
                     if (!modelChatList.getId().equals(firebaseUser.getUid())) {
                         chatListList.add(modelChatList);
                     }
@@ -93,7 +98,6 @@ public class ChatListFragment extends Fragment {
                             break;
                         }
                     }
-                    Log.e("VCLLL", usersList.toString());
                     adapterChatList = new AdapterChatList(getActivity(), usersList);
                     recyclerView.setAdapter(adapterChatList);
 

@@ -1,6 +1,7 @@
 package com.example.mxhh;
 
 class ModelChatList {
+    String id;
 
     public String getId() {
         return id;
@@ -16,6 +17,4 @@ class ModelChatList {
     public ModelChatList(String id) {
         this.id = id;
     }
-
-    String id;
 }
