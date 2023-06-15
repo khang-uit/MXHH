@@ -47,23 +47,6 @@
             android:text="Last Message"
             android:textColor="@color/colorBlack" />
 
-        <ImageView
-            android:id="@+id/blocking"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/unlock" />
-
-        <ImageView
-            android:id="@+id/seen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/blocking"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/unlock" />
-
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
