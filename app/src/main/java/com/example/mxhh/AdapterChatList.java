@@ -49,7 +49,7 @@ public class AdapterChatList extends RecyclerView.Adapter<AdapterChatList.Myhold
         String username = usersList.get(position).getName();
         String lastmess = lastMessageMap.get(hisuid);
         holder.name.setText(username);
-        holder.block.setImageResource(R.drawable.unlock);
+
 
         if (lastmess == null || lastmess.equals("default")) {
             holder.lastmessage.setVisibility(View.GONE);
@@ -94,8 +94,6 @@ public class AdapterChatList extends RecyclerView.Adapter<AdapterChatList.Myhold
             status = itemView.findViewById(R.id.onlinestatus);
             name = itemView.findViewById(R.id.nameonline);
             lastmessage = itemView.findViewById(R.id.lastmessge);
-            block = itemView.findViewById(R.id.blocking);
-            seen = itemView.findViewById(R.id.seen);
         }
     }
 }

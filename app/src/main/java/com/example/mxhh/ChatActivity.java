@@ -90,7 +90,6 @@ public class ChatActivity extends AppCompatActivity {
         msg = findViewById(R.id.messaget);
         send = findViewById(R.id.sendmsg);
         attach = findViewById(R.id.attachbtn);
-        block = findViewById(R.id.block);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setStackFromEnd(true);
         recyclerView = findViewById(R.id.chatrecycle);
