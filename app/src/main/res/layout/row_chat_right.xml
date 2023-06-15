@@ -11,7 +11,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="127dp"
+        android:layout_height="130dp"
 
         android:orientation="horizontal">
 
@@ -27,6 +27,8 @@
             android:id="@+id/timetv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="2dp"
             android:text="02/01/1990 06:19PM"
             android:textColor="@color/colorBlack"
             android:textSize="12sp" />
@@ -38,9 +40,9 @@
             android:layout_below="@+id/timetv"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="269dp"
+            android:layout_marginStart="270dp"
+            android:layout_marginTop="-1dp"
+            android:layout_marginEnd="-1dp"
             android:padding="5dp"
             android:text="His Message"
             android:textColor="@color/colorBlack"
@@ -50,10 +52,10 @@
             android:id="@+id/images"
             android:layout_width="123dp"
             android:layout_height="111dp"
-            android:layout_below="@+id/msgc"
+            android:layout_alignTop="@+id/msgc"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="-33dp"
-            android:layout_marginEnd="268dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
             android:adjustViewBounds="true"
             android:padding="15dp"
             android:scaleType="fitCenter"
