@@ -11,7 +11,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="182dp"
+        android:layout_height="127dp"
 
         android:orientation="horizontal">
 
@@ -52,8 +52,8 @@
             android:layout_height="111dp"
             android:layout_below="@+id/msgc"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="269dp"
+            android:layout_marginTop="-33dp"
+            android:layout_marginEnd="268dp"
             android:adjustViewBounds="true"
             android:padding="15dp"
             android:scaleType="fitCenter"
@@ -64,7 +64,7 @@
     <TextView
         android:id="@+id/isSeen"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="3dp"
         android:gravity="end"
         android:text="Delivered"
         android:textAlignment="textEnd" />
