@@ -49,7 +49,7 @@ public class ProfileFragment extends Fragment {
     FloatingActionButton fab;
     List<ModelPost> posts;
     AdapterPosts adapterPosts;
-    String uid;
+    String uid, myemail;
     ProgressDialog pd;
     private static final int CAMERA_REQUEST = 100;
     private static final int STORAGE_REQUEST = 200;
@@ -77,6 +77,7 @@ public class ProfileFragment extends Fragment {
         nam = view.findViewById(R.id.nametv);
         email = view.findViewById(R.id.emailtv);
         uid = FirebaseAuth.getInstance().getUid();
+        myemail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         fab = view.findViewById(R.id.fab);
         postrecycle = view.findViewById(R.id.recyclerposts);
         posts = new ArrayList<>();
@@ -124,7 +125,7 @@ public class ProfileFragment extends Fragment {
         postrecycle.setLayoutManager(layoutManager);
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Posts");
-        Query query = databaseReference.orderByChild("uid").equalTo(uid);
+        Query query = databaseReference.orderByChild("uemail").equalTo(myemail);
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
