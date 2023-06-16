@@ -184,13 +184,7 @@ public class AddBlogsFragment extends Fragment {
                 if (grantResults.length > 0) {
                     boolean camera_accepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                     boolean writeStorageaccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
-
-                    // if request access given the pick data
-                    if (camera_accepted && writeStorageaccepted) {
-                        pickFromCamera();
-                    } else {
-                        Toast.makeText(getContext(), "Please Enable Camera and Storage Permissions", Toast.LENGTH_LONG).show();
-                    }
+                    pickFromCamera();
                 }
             }
 
@@ -198,13 +192,7 @@ public class AddBlogsFragment extends Fragment {
             case STORAGE_REQUEST: {
                 if (grantResults.length > 0) {
                     boolean writeStorageaccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-
-                    // if request access given the pick data
-                    if (writeStorageaccepted) {
-                        pickFromGallery();
-                    } else {
-                        Toast.makeText(getContext(), "Please Enable Storage Permissions", Toast.LENGTH_LONG).show();
-                    }
+                    pickFromGallery();
                 }
             }
             break;

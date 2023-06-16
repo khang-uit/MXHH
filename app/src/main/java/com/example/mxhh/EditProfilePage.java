@@ -408,27 +408,22 @@ public class EditProfilePage extends AppCompatActivity {
                 if (grantResults.length > 0) {
                     boolean camera_accepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                     boolean writeStorageaccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
-                    if (camera_accepted && writeStorageaccepted) {
-                        pickFromCamera();
-                    } else {
-                        Toast.makeText(this, "Please Enable Camera and Storage Permissions", Toast.LENGTH_LONG).show();
-                    }
+                    pickFromCamera();
+
                 }
             }
             break;
             case STORAGE_REQUEST: {
                 if (grantResults.length > 0) {
                     boolean writeStorageaccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-                    if (writeStorageaccepted) {
-                        pickFromGallery();
-                    } else {
-                        Toast.makeText(this, "Please Enable Storage Permissions", Toast.LENGTH_LONG).show();
-                    }
+                    pickFromGallery();
+
                 }
             }
             break;
         }
     }
+
 
     // Here we will click a photo and then go to startactivityforresult for updating data
     private void pickFromCamera() {
