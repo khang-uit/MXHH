@@ -146,7 +146,6 @@ public class HomeFragment extends Fragment {
     // Logout functionality
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
         if (item.getItemId() == R.id.logout) {
             firebaseAuth.signOut();
             startActivity(new Intent(getContext(), SplashScreen.class));
