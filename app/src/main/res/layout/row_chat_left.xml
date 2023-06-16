@@ -32,18 +32,22 @@
             android:id="@+id/msgc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="15dp"
+            android:layout_toRightOf="@id/profilec"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="60dp"
+            android:padding="10dp"
+            android:paddingStart="10dp"
             android:text="His Message"
             android:background="@drawable/chat_bgleft"
             android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            android:visibility="gone" />
+            android:textSize="16sp"/>
 
         <ImageView
             android:id="@+id/images"
-            android:layout_width="113dp"
-            android:layout_height="108dp"
+            android:layout_width="123dp"
+            android:layout_height="111dp"
+            android:layout_alignTop="@+id/msgc"
+            android:layout_alignParentEnd="true"
             android:adjustViewBounds="true"
             android:background="@drawable/buttonss"
             android:padding="15dp"
