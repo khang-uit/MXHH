@@ -136,12 +136,6 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.MyHolder> {
                 });
             }
         });
-        holder.more.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showMoreOptions(holder.more, uid, myuid, ptime, image);
-            }
-        });
         holder.comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
