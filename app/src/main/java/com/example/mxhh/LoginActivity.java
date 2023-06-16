@@ -100,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
         builder.setTitle("Recover Password");
         LinearLayout linearLayout = new LinearLayout(this);
         final EditText emailet = new EditText(this);
-        emailet.setText("Email");
+        emailet.setHint("Input recovery email...");
         emailet.setMinEms(16);
         emailet.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
         linearLayout.addView(emailet);
