@@ -297,7 +297,7 @@ public class ChatActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (resultCode == RESULT_OK) {
             if (requestCode == IMAGEPICK_GALLERY_REQUEST) {
-                imageuri = data.getData(); // get image data to upload
+                imageuri = data.getData();
                 try {
                     sendImageMessage(imageuri);
                 } catch (IOException e) {
@@ -321,10 +321,6 @@ public class ChatActivity extends AppCompatActivity {
         dialog.setMessage("Sending Image");
         dialog.show();
 
-        // If we are sending image as a message
-        // then we need to find the url of
-        // image after uploading the
-        // image in firebase storage
         final String timestamp = "" + System.currentTimeMillis();
         String filepathandname = "ChatImages/" + "post" + timestamp; // filename
         Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageuri);

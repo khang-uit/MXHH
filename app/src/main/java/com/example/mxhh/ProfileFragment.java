@@ -58,13 +58,13 @@ public class ProfileFragment extends Fragment {
     Uri imageuri;
 
     public ProfileFragment() {
-        // Required empty public constructor
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -83,7 +83,7 @@ public class ProfileFragment extends Fragment {
         loadMyPosts();
         pd.setCanceledOnTouchOutside(false);
 
-        // Retrieving user data from firebase
+
         Query query = databaseReference.orderByChild("email").equalTo(firebaseUser.getEmail());
         query.addValueEventListener(new ValueEventListener() {
             @Override

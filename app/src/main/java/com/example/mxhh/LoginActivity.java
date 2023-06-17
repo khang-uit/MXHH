@@ -127,10 +127,10 @@ public class LoginActivity extends AppCompatActivity {
         loadingBar.setCanceledOnTouchOutside(false);
         loadingBar.show();
 
-        // dung mAuth cua firebas de gui
+
         mAuth.sendPasswordResetEmail(emaill).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            //Ney thanh cong
+
             public void onComplete(@NonNull Task<Void> task) {
                 loadingBar.dismiss();
                 if (task.isSuccessful()) {
@@ -139,7 +139,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Error Occurred", Toast.LENGTH_LONG).show();
                 }
             }
-            //Neu that bai
+
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
@@ -153,7 +153,7 @@ public class LoginActivity extends AppCompatActivity {
         loadingBar.setMessage("Logging In....");
         loadingBar.show();
 
-        // Dang nhap mang mAuth cua firebase
+
         mAuth.signInWithEmailAndPassword(emaill, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -163,7 +163,7 @@ public class LoginActivity extends AppCompatActivity {
                     loadingBar.dismiss();
                     FirebaseUser user = mAuth.getCurrentUser();
 
-                    //Chuan bi du lieu can thiet de luu vao
+
                     if (task.getResult().getAdditionalUserInfo().isNewUser()) {
                         String email = user.getEmail();
                         String uid = user.getUid();
@@ -178,10 +178,10 @@ public class LoginActivity extends AppCompatActivity {
                         hashMap.put("cover", "");
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-                        // Luu du lieu vao bang Users dang object
+
                         DatabaseReference reference = database.getReference("Users");
 
-                        // Bat dau luu vao thang con cua Uid cua User
+
                         reference.child(uid).setValue(hashMap);
                     }
                     Toast.makeText(LoginActivity.this, "Registered User " + user.getEmail(), Toast.LENGTH_LONG).show();

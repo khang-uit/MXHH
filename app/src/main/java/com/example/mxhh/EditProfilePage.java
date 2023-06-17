@@ -200,30 +200,27 @@ public class EditProfilePage extends AppCompatActivity {
         });
     }
 
-    // checking storage permission ,if given then we can add something in our storage
     private Boolean checkStoragePermission() {
         boolean result = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
         return result;
     }
 
-    // requesting for storage permission
+
     private void requestStoragePermission() {
         requestPermissions(storagePermission, STORAGE_REQUEST);
     }
 
-    // checking camera permission ,if given then we can click image using our camera
+
     private Boolean checkCameraPermission() {
         boolean result = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == (PackageManager.PERMISSION_GRANTED);
         boolean result1 = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
         return result && result1;
     }
 
-    // requesting for camera permission if not given
     private void requestCameraPermission() {
         requestPermissions(cameraPermission, CAMERA_REQUEST);
     }
 
-    // We will show an alert box where we will write our old and new password
     private void showPasswordChangeDailog() {
         View view = LayoutInflater.from(this).inflate(R.layout.dialog_update_password, null);
         final EditText oldpass = view.findViewById(R.id.oldpasslog);
@@ -252,8 +249,6 @@ public class EditProfilePage extends AppCompatActivity {
         });
     }
 
-    // Now we will check that if old password was authenticated
-    // correctly then we will update the new password
     private void updatePassword(String oldp, final String newp) {
         pd.show();
         final FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -286,12 +281,11 @@ public class EditProfilePage extends AppCompatActivity {
                 });
     }
 
-    // Updating name
+
     private void showNamephoneupdate(final String key) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Update" + key);
 
-        // creating a layout to write the new name
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
         layout.setPadding(10, 10, 10, 10);
@@ -307,7 +301,7 @@ public class EditProfilePage extends AppCompatActivity {
                 if (!TextUtils.isEmpty(value)) {
                     pd.show();
 
-                    // Here we are updating the new name
+
                     HashMap<String, Object> result = new HashMap<>();
                     result.put(key, value);
                     databaseReference.child(firebaseUser.getUid()).updateChildren(result).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -315,7 +309,7 @@ public class EditProfilePage extends AppCompatActivity {
                         public void onSuccess(Void aVoid) {
                             pd.dismiss();
 
-                            // after updated we will show updated
+
                             Toast.makeText(EditProfilePage.this, " updated ", Toast.LENGTH_LONG).show();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -358,7 +352,7 @@ public class EditProfilePage extends AppCompatActivity {
         builder.create().show();
     }
 
-    // Here we are showing image pic dialog where we will select
+
     // and image either from camera or gallery
     private void showImagePicDialog() {
         String options[] = {"Camera", "Gallery"};

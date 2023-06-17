@@ -50,7 +50,6 @@ import java.util.HashMap;
 public class AddBlogsFragment extends Fragment {
 
     public AddBlogsFragment() {
-        // Required empty public constructor
     }
 
     FirebaseAuth firebaseAuth;
@@ -150,8 +149,6 @@ public class AddBlogsFragment extends Fragment {
         builder.setItems(options, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // check for the camera and storage permission if
-                // not given the request for permission
                 if (which == 0) {
                     if (!checkCameraPermission()) {
                         requestCameraPermission();
@@ -241,12 +238,10 @@ public class AddBlogsFragment extends Fragment {
         storageReference1.putBytes(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                // getting the url of image uploaded
                 Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
                 while (!uriTask.isSuccessful()) ;
                 String downloadUri = uriTask.getResult().toString();
                 if (uriTask.isSuccessful()) {
-                    // if task is successful the update the data into firebase
                     HashMap<Object, String> hashMap = new HashMap<>();
                     hashMap.put("uid", uid);
                     hashMap.put("uname", name);
