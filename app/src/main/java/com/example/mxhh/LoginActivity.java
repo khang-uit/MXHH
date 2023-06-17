@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                 String emaill = email.getText().toString().trim();
                 String pass = password.getText().toString().trim();
 
-                // Kiem tra dinh dang email
+
                 if (!Patterns.EMAIL_ADDRESS.matcher(emaill).matches()) {
                     email.setError("Invalid Email");
                     email.setFocusable(true);
@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        // Su kien bam vao text new account
+
         newdnewaccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,10 +85,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        // Lay lai mat khau bang email khi nhan vao text forgot password
+
         reocverpass.setOnClickListener(new View.OnClickListener() {
             @Override
-            //  Chay ham de pop up dialog
+
             public void onClick(View v) {
                 showRecoverPasswordDialog();
             }
@@ -110,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String emaill = emailet.getText().toString().trim();
-                beginRecovery(emaill);// Chay ham recovery email dua theo bien email nay
+                beginRecovery(emaill);
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

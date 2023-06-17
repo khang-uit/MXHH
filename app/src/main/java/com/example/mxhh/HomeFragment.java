@@ -29,9 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class HomeFragment extends Fragment {
 
     FirebaseAuth firebaseAuth;
@@ -41,12 +39,12 @@ public class HomeFragment extends Fragment {
     AdapterPosts adapterPosts;
 
     public HomeFragment() {
-        // Required empty public constructor
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         firebaseAuth = FirebaseAuth.getInstance();
         recyclerView = view.findViewById(R.id.postrecyclerview);
@@ -81,7 +79,7 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    // Search post code
+
     private void searchPosts(final String search) {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Posts");
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -143,7 +141,7 @@ public class HomeFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    // Logout functionality
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.logout) {

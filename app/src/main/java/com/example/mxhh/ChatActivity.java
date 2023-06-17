@@ -99,7 +99,7 @@ public class ChatActivity extends AppCompatActivity {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
 
-        // initialising permissions
+
         cameraPermission = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagePermission = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
@@ -116,7 +116,7 @@ public class ChatActivity extends AppCompatActivity {
             public void onClick(View v) {
                 notify = true;
                 String message = msg.getText().toString().trim();
-                if (TextUtils.isEmpty(message)) {//if empty
+                if (TextUtils.isEmpty(message)) {
                     Toast.makeText(ChatActivity.this, "Please Write Something Here", Toast.LENGTH_LONG).show();
                 } else {
                     sendmessage(message);
@@ -129,14 +129,14 @@ public class ChatActivity extends AppCompatActivity {
         userquery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // retrieve user data
+
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     String nameh = "" + dataSnapshot1.child("name").getValue();
                     image = "" + dataSnapshot1.child("image").getValue();
                     String onlinestatus = "" + dataSnapshot1.child("onlineStatus").getValue();
                     String typingto = "" + dataSnapshot1.child("typingTo").getValue();
-                    if (typingto.equals(myuid)) {// if user is typing to my chat
-                        userstatus.setText("Typing....");// type status as typing
+                    if (typingto.equals(myuid)) {
+                        userstatus.setText("Typing....");
                     } else {
                         if (onlinestatus.equals("online")) {
                             userstatus.setText(onlinestatus);
@@ -186,7 +186,7 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void checkOnlineStatus(String status) {
-        // check online status
+
         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("Users").child(myuid);
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("onlineStatus", status);
@@ -208,7 +208,7 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void readMessages() {
-        // show message after retrieving data
+
         chatList = new ArrayList<>();
         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("Chats");
         dbref.addValueEventListener(new ValueEventListener() {
@@ -222,7 +222,7 @@ public class ChatActivity extends AppCompatActivity {
                             modelChat.getReceiver().equals(uid) ||
                             modelChat.getReceiver().equals(myuid)
                                     && modelChat.getSender().equals(uid)) {
-                        chatList.add(modelChat); // add the chat in chatlist
+                        chatList.add(modelChat);
                     }
                     adapterChat = new AdapterChat(ChatActivity.this, chatList, image);
                     adapterChat.notifyDataSetChanged();
@@ -246,16 +246,16 @@ public class ChatActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
 
                 if (which == 0) {
-                    if (!checkCameraPermission()) { // if permission is not given
-                        requestCameraPermission(); // request for permission
+                    if (!checkCameraPermission()) {
+                        requestCameraPermission();
                     } else {
-                        pickFromCamera(); // if already access granted then click
+                        pickFromCamera();
                     }
                 } else if (which == 1) {
-                    if (!checkStoragePermission()) { // if permission is not given
-                        requestStoragePermission(); // request for permission
+                    if (!checkStoragePermission()) {
+                        requestStoragePermission();
                     } else {
-                        pickFromGallery(); // if already access granted then pick
+                        pickFromGallery();
                     }
                 }
             }
@@ -264,7 +264,7 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        // request for permission if not given
+
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case CAMERA_REQUEST: {
@@ -272,7 +272,7 @@ public class ChatActivity extends AppCompatActivity {
                     boolean camera_accepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                     boolean writeStorageaccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
                     if (camera_accepted && writeStorageaccepted) {
-                        pickFromCamera(); // if access granted then click
+                        pickFromCamera();
                     } else {
                         Toast.makeText(this, "Please Enable Camera and Storage Permissions", Toast.LENGTH_LONG).show();
                     }
@@ -283,7 +283,7 @@ public class ChatActivity extends AppCompatActivity {
                 if (grantResults.length > 0) {
                     boolean writeStorageaccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                     if (writeStorageaccepted) {
-                        pickFromGallery(); // if access granted then pick
+                        pickFromGallery();
                     } else {
                         Toast.makeText(this, "Please Enable Storage Permissions", Toast.LENGTH_LONG).show();
                     }

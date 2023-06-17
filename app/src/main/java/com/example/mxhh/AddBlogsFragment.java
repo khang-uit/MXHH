@@ -46,9 +46,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class AddBlogsFragment extends Fragment {
 
     public AddBlogsFragment() {

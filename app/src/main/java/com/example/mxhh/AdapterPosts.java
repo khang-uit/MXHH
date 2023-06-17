@@ -1,8 +1,10 @@
 package com.example.mxhh;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.text.format.DateFormat;
 import android.view.Gravity;
@@ -43,7 +45,7 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.MyHolder> {
 
 
     Context context;
-    String myuid;
+    String myuid, myemail;
     private DatabaseReference liekeref, postref;
     boolean mprocesslike = false;
 
@@ -51,6 +53,7 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.MyHolder> {
         this.context = context;
         this.modelPosts = modelPosts;
         myuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        myemail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         liekeref = FirebaseDatabase.getInstance().getReference().child("Likes");
         postref = FirebaseDatabase.getInstance().getReference().child("Posts");
     }
@@ -98,6 +101,13 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.MyHolder> {
         } catch (Exception e) {
 
         }
+
+        if (email.equals(myemail)) {
+            holder.deletebtn.setVisibility(View.VISIBLE);
+        } else {
+            holder.deletebtn.setVisibility(View.GONE);
+        }
+
         holder.like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -144,25 +154,27 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.MyHolder> {
                 context.startActivity(intent);
             }
         });
-    }
-
-    private void showMoreOptions(ImageButton more, String uid, String myuid, final String pid, final String image) {
-
-        PopupMenu popupMenu = new PopupMenu(context, more, Gravity.END);
-        if (uid.equals(myuid)) {
-            popupMenu.getMenu().add(Menu.NONE, 0, 0, "DELETE");
-        }
-        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+        holder.deletebtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId() == 0) {
-                    deltewithImage(pid, image);
-                }
-
-                return false;
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Delete Post");
+                builder.setMessage("Are You Sure To Delete This Post");
+                builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        deltewithImage(pid, image);
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.create().show();
             }
         });
-        popupMenu.show();
     }
 
     private void deltewithImage(final String pid, String image) {
@@ -230,6 +242,7 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.MyHolder> {
         TextView name, time, title, description, like, comments;
         ImageButton more;
         Button likebtn, comment;
+        ImageButton deletebtn;
         LinearLayout profile;
 
         public MyHolder(@NonNull View itemView) {
@@ -246,6 +259,7 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.MyHolder> {
             likebtn = itemView.findViewById(R.id.like);
             comment = itemView.findViewById(R.id.comment);
             profile = itemView.findViewById(R.id.profilelayout);
+            deletebtn = itemView.findViewById(R.id.deletebtn);
         }
     }
 }
